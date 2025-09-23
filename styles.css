@@ -67,8 +67,7 @@ body::after{
 
 
 header {
-    display: flex
-;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 18px;
@@ -249,4 +248,5 @@ footer{
 .muted{color:var(--muted)}
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.show{opacity:1;transform:none}
+
 
