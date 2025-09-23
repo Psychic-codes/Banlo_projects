@@ -1,9 +1,3 @@
-
-/* ----------------------------
-   styles.css (responsive rewrite)
-   Replace your existing styles.css with this file
-   ---------------------------- */
-
 :root{
   --navy: #13345A;
   --navy-2: #0e2b44;
@@ -17,10 +11,8 @@
   --shadow: 0 12px 30px rgba(19,52,90,0.08);
   --ease: cubic-bezier(.22,.9,.38,1);
 }
-
-/* Box model and base */
 *{box-sizing:border-box}
-html,body{height:100%; width:100%; overflow-x:hidden;}
+html,body{height:100%}
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
@@ -30,10 +22,8 @@ body{
   background: linear-gradient(180deg,#eaf6fb 0%, #f8fbfc 45%, #fffefc 100%);
   overflow-y:auto;
   position:relative;
-  padding:20px;
+  padding:28px;
 }
-
-/* subtle decorative blobs (kept, but won't push layout) */
 body::before, body::after{
   content:"";
   position:fixed;
@@ -46,7 +36,7 @@ body::before, body::after{
   pointer-events:none;
   border-radius:40%;
   filter:blur(60px);
-  opacity:0.32;
+  opacity:0.38;
 }
 body::before{
   background: radial-gradient(circle at 20% 30%, rgba(19,52,90,0.18), transparent 18%),
@@ -55,14 +45,13 @@ body::before{
 }
 body::after{
   background: linear-gradient(135deg, rgba(19,52,90,0.03) 0%, rgba(247,144,29,0.02) 50%, rgba(19,52,90,0.02) 100%);
-  width:2000px;height:500px;top:30%;opacity:0.18;filter:blur(40px);
+  width:2000px;height:500px;top:30%;opacity:0.25;filter:blur(40px);
   animation: blobMove 28s linear infinite alternate-reverse;
 }
 @keyframes blobMove{
   from{transform:translateX(-48%) translateY(0) rotate(0deg)}
   to{transform:translateX(-52%) translateY(30px) rotate(6deg)}
 }
-
 .wrap::before{
   content:"";
   position:absolute; inset:0;
@@ -76,28 +65,11 @@ body::after{
 
 /* ---------------- HEADER ---------------- */
 header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
   background:linear-gradient(90deg,var(--navy),var(--navy-2));
-  padding:12px 18px;
-  border-radius:14px;
-  color:white;
-  box-shadow:var(--shadow);
-  position:relative;
-  z-index:3;
-  overflow:hidden;          /* prevent accidental overflow */
+  padding:12px 18px;border-radius:14px;color:white;box-shadow:var(--shadow);
 }
-
-/* Brand area */
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;              /* allow truncation */
-  flex:1 1 auto;            /* occupy available space but shrink if needed */
-}
+.brand{display:flex;align-items:center;gap:12px}
 .logo-wrap{
   width:64px;height:64px;
   border-radius:12px;
@@ -115,63 +87,26 @@ header{
   display:block;
 }
 .wordmark{font-weight:800;font-size:16px;color:var(--navy);display:none}
-
-/* Brand text - allow truncation instead of pushing other items */
-.brand-text{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-width:0;
-}
-.brand-text .title{
-  font-weight:800;
-  font-size:22px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;   /* important: truncate long titles */
-}
-.brand-text .subtitle{
-  font-size:13px;
-  color:rgba(255,255,255,0.9);
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
+.brand-text .title{font-weight:800;font-size:25px}
+.brand-text .subtitle{font-size:13px;color:rgba(255,255,255,0.9)}
 
 /* NAV */
-nav{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  flex:0 0 auto;
-  margin-left:8px;
-}
+nav{display:flex;gap:12px;align-items:center}
 nav a{
   color:rgba(255,255,255,0.95);
   padding:8px 12px;
   border-radius:10px;
   font-weight:700;
   text-decoration:none;
-  white-space:nowrap;
-  flex-shrink:0;            /* don't let links collapse weirdly */
 }
 nav a:hover, nav a:focus{background:rgba(255,255,255,0.06);text-decoration:none}
 .nav-contact{
   background:linear-gradient(90deg,var(--accent),#ff8d2b);
-  padding:8px 12px;border-radius:10px;font-weight:800;
-  box-shadow: 0 6px 18px rgba(247,144,29,0.12);
+  padding:8px 12px;border-radius:10px;font-weight:800
 }
 
-/* ---------------- HERO / CONTENT (keeps original layout) ---------------- */
-.hero{
-  grid-template-columns:1fr 380px;
-  gap:20px;
-  align-items:flex-start;
-  margin:20px 0;
-  position:relative;
-  z-index:2;
-  display:grid;
-}
+/* HERO */
+.hero{grid-template-columns:1fr 380px;gap:20px;align-items:flex-start;margin:20px 0;position:relative;z-index:2}
 @media(max-width:980px){ .hero{grid-template-columns:1fr} }
 .hero-card{
   background: linear-gradient(180deg,var(--paper),#fff);
@@ -181,28 +116,13 @@ nav a:hover, nav a:focus{background:rgba(255,255,255,0.06);text-decoration:none}
 .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(247,144,29,0.12),rgba(247,144,29,0.06));color:var(--accent);font-weight:800}
 h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
 .lead{color:var(--muted);margin:0 0 16px;max-width:85%}
-.actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start;margin-top:12px}
-
-/* Buttons */
-.btn-primary{
-  background:linear-gradient(90deg,var(--accent),#ff8d2b);
-  border:none;color:#061217;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;
-  box-shadow:0 10px 30px rgba(247,144,29,0.12);
-}
-.btn-primary:hover{transform:translateY(-3px)}
+.actions{display:flex;gap:12px;align-items:center;margin-top:12px}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#ff8d2b);border:none;color:#061217;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;box-shadow:0 10px 30px rgba(247,144,29,0.12)}
+.btn-primary:hover{transform:translateY(-4px)}
 .btn-ghost{background:transparent;border:1px solid rgba(19,52,90,0.06);padding:10px 12px;border-radius:10px;color:var(--navy-2);font-weight:700;cursor:pointer}
+.accent-line{height:6px;width:900px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ff8d2b);margin-top:12px}
 
-/* accent-line used inside hero actions - reduced width to avoid overflow */
-.accent-line{
-  height:6px;
-  width:160px;            /* compact, won't create horizontal overflow on mobile */
-  max-width:100%;
-  border-radius:10px;
-  background:linear-gradient(90deg,var(--accent),#ff8d2b);
-  margin-top:6px;
-}
-
-/* Sections, cards, team etc left mostly unchanged */
+/* Sections */
 .section{margin:26px 0;position:relative;z-index:2}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:900px){ .cards{grid-template-columns:1fr} }
@@ -224,8 +144,7 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
   display:flex;gap:16px;align-items:flex-start;
   background:var(--paper);padding:12px;border-radius:12px;
   border:1px solid rgba(19,52,90,0.03);box-shadow:var(--shadow);
-  transition:transform .25s var(--ease);cursor:pointer;
-  min-width:0;
+  transition:transform .25s var(--ease);cursor:pointer
 }
 .member:hover{transform:translateY(-6px)}
 .avatar{width:108px;height:108px;border-radius:50%;overflow:hidden;border:6px solid var(--paper);box-shadow:0 10px 30px rgba(19,52,90,0.08);flex:0 0 108px}
@@ -263,7 +182,7 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
 @media(max-width:700px){ .form-grid{grid-template-columns:1fr} }
 input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(19,52,90,0.06);font-size:14px}
 textarea{min-height:120px;resize:vertical}
-.form-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.form-actions{display:flex;gap:10px;align-items:center}
 .status{font-weight:800;color:var(--navy-2)}
 
 /* FOOTER */
@@ -312,74 +231,10 @@ footer{
   .footer-content p{justify-content:flex-start}
 }
 
-/* ------------------ Responsive header / mobile fixes ------------------ */
-
-/* Slightly smaller overall on tablet */
-@media (max-width: 980px) {
-  body{padding:16px;}
-  .brand-text .title{font-size:20px;}
-  .brand-text .subtitle{font-size:12px;}
-  .hero{gap:16px}
-  .accent-line{width:140px}
-}
-
-/* Mobile breakpoint - stack header brand + nav */
-@media (max-width: 680px) {
-  header{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:10px;
-    padding:10px;
-  }
-
-  .brand{
-    width:100%;
-    justify-content:flex-start;
-    gap:10px;
-  }
-
-  .logo-wrap{width:54px;height:54px}
-  .brand-text .title{font-size:18px}
-  .brand-text .subtitle{font-size:11px; opacity:0.95}
-
-  /* Put nav on its own row and center links */
-  nav{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-top:6px;
-  }
-  nav a{font-size:14px;padding:8px 10px}
-  .nav-contact{
-    flex-basis:100%;
-    text-align:center;
-    display:inline-block;
-    margin-top:6px;
-  }
-
-  /* keep hero lead readable */
-  .lead{max-width:100%}
-  .accent-line{width:120px}
-}
-
-/* Very small devices */
-@media (max-width:420px){
-  body{padding:12px}
-  .logo-wrap{width:48px;height:48px}
-  .brand-text .title{font-size:15px}
-  .brand-text .subtitle{display:none}
-  nav a{font-size:13px;padding:6px 8px}
-  .accent-line{width:100px}
-}
-
-/* Reveal animation class */
-.reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.reveal.show{opacity:1;transform:none}
-
-/* Small utility classes */
+/* UTILS */
 .mt-12{margin-top:12px}
-.mt-14{margin-top:14px}
+.mt-14{margin-top:62px}
 .mt-18{margin-top:18px}
 .muted{color:var(--muted)}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.show{opacity:1;transform:none}
