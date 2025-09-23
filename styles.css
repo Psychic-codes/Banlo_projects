@@ -167,11 +167,40 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
 .full-bio.open{display:block}
 
 /* Mobile team layout */
-@media(max-width:768px){
-  .member{flex-direction:column;align-items:center;text-align:center}
-  .avatar{width:96px;height:96px}
-  .toggle-bio{width:100%}
-  .full-bio{text-align:left;width:100%}
+/* Mobile Header Fix */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .brand-text .title {
+    font-size: 18px;
+  }
+
+  .brand-text .subtitle {
+    font-size: 11px;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  nav a {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .nav-contact {
+    flex: 1 1 100%;
+    text-align: center;
+  }
 }
 
 /* CONTACT / FORM */
@@ -238,3 +267,4 @@ footer{
 .muted{color:var(--muted)}
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.show{opacity:1;transform:none}
+
