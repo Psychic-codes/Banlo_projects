@@ -2,7 +2,7 @@
   --navy: #13345A;
   --navy-2: #0e2b44;
   --accent: #F7901D;
-  --paper: #FBF6F0;
+  --paper: #fcfcfc;
   --muted: #6b7a89;
   --text: #0b2b36;
   --card: #ffffff;
@@ -78,7 +78,7 @@ nav a{color:rgba(255,255,255,0.95);padding:8px 12px;border-radius:10px;font-weig
 nav a:hover{background:rgba(255,255,255,0.06)}
 .nav-contact{background:linear-gradient(90deg,var(--accent),#ff8d2b);padding:8px 12px;border-radius:10px;font-weight:800}
 
-/* HERO: align items to top so hero card and right tile align */
+/* HERO */
 .hero{grid-template-columns:1fr 380px;gap:20px;align-items:flex-start;margin:20px 0;position:relative;z-index:2}
 @media(max-width:980px){ .hero{grid-template-columns:1fr} }
 .hero-card{
@@ -102,7 +102,7 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
   filter: blur(28px); pointer-events:none; z-index:0;
 }
 
-/* hero-aside (replaces hero-side) */
+/* hero-aside */
 .hero-aside{
   background:linear-gradient(180deg,var(--navy),var(--navy-2));
   color:white;padding:26px;border-radius:14px;box-shadow:0 12px 30px rgba(19,52,90,0.12);display:flex;flex-direction:column;gap:10px;position:relative;z-index:2
@@ -130,7 +130,7 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
 .service-item{background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(19,52,90,0.03);box-shadow:var(--shadow)}
 .team{display:flex;flex-direction:column;gap:12px;margin-top:12px}
 
-/* Member card / avatar */
+/* Member card */
 .member{display:flex;gap:16px;align-items:flex-start;background:var(--paper);padding:12px;border-radius:12px;border:1px solid rgba(19,52,90,0.03);box-shadow:var(--shadow);transition:transform .25s var(--ease);position:relative;outline:none;cursor:pointer}
 .member:hover{transform:translateY(-6px)}
 .avatar{width:108px;height:108px;border-radius:999px;overflow:hidden;border:6px solid var(--paper);box-shadow:0 10px 30px rgba(19,52,90,0.08);flex:0 0 108px}
@@ -138,8 +138,6 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
 .meta strong{display:block;color:var(--navy-2);font-size:18px}
 .meta small{color:var(--muted);display:block;margin-top:6px}
 .meta .muted{color:var(--muted)}
-
-/* full-bio overlay (hidden by default, appears on hover/focus) */
 .meta {position:relative}
 .full-bio{
   position:relative;
@@ -158,24 +156,18 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
   overflow:hidden;
   z-index:60;
 }
-
-/* show on hover / keyboard focus-within */
 .member:hover .full-bio, .member:focus-within .full-bio{
   opacity:1;
   transform:none;
   pointer-events:auto;
   max-height:1200px;
 }
-
-/* flip overlay to left if class is set by script */
 .member.overlay-left .full-bio{ left:auto; right:calc(100% + 14px) }
-
-/* inner scroll for long bios */
 .full-bio > ul, .full-bio > p { margin: 0 0 8px 0; }
 .full-bio { line-height:1.45; }
 .full-bio .list-compact { font-weight:400; }
 
-/* Mobile: overlay becomes in-flow (below card) */
+/* Mobile: overlay in-flow */
 @media(max-width:980px){
   .member{flex-direction:row;align-items:flex-start}
   .full-bio{
@@ -193,7 +185,6 @@ h1{margin:12px 0 8px;font-size:28px;color:var(--navy-2)}
     border:1px solid rgba(19,52,90,0.03);
     background:#fff;
   }
-  /* since overlay is in-flow, hover is equivalent to showing the content */
   .member:hover .full-bio, .member:focus-within .full-bio{ max-height:none; }
 }
 
@@ -218,13 +209,12 @@ footer .muted{color:rgba(255,255,255,0.85);font-size:13px}
 .small{font-size:13px}
 .muted{color:var(--muted)}
 
-/* slightly gentler reveal so 'card mt' and hero-aside feel in sync */
+/* Reveal animations */
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.show{opacity:1;transform:none}
-
-/* small alignment fix for previously-misplaced card margin */
 .card-mt{margin-top:0}
 
+/* Footer flex */
 .footer-content{
   display:flex;
   justify-content: space-between;
@@ -232,7 +222,6 @@ footer .muted{color:rgba(255,255,255,0.85);font-size:13px}
   padding-left: 60px;
   padding-right: 60px;
 }
-
 .Footer-logo{
   width: 30px;
   height: 30px;
@@ -242,3 +231,35 @@ footer .muted{color:rgba(255,255,255,0.85);font-size:13px}
   align-items: center;
   justify-content: center;
 }
+
+/* -------------------- RESPONSIVE FIXES -------------------- */
+@media (max-width: 768px) {
+  body { padding: 12px; }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .brand-text .title { font-size: 18px; text-align: center; }
+  .brand-text .subtitle { font-size: 12px; text-align: center; }
+  nav { flex-wrap: wrap; gap: 8px; justify-content: center; width: 100%; }
+  nav a { font-size: 14px; padding: 6px 10px; }
+  .hero-card { padding: 18px; }
+  h1 { font-size: 22px; line-height: 1.3; }
+  .lead { max-width: 100%; font-size: 14px; }
+  .actions { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-ghost { width: 100%; }
+  .accent-line { width: 100%; }
+  .cards, .mini-cards, .services { grid-template-columns: 1fr; }
+  .form-actions { flex-direction: column; align-items: stretch; }
+  .footer-content { flex-direction: column; gap: 10px; padding: 0; }
+}
+.member{display:flex;gap:16px;background:var(--paper);padding:12px;border-radius:12px;box-shadow:var(--shadow)}
+.avatar{width:108px;height:108px;border-radius:50%;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.meta strong{display:block;font-size:18px;color:var(--navy-2)}
+.meta small{color:var(--muted);display:block;margin-top:6px}
+.toggle-bio{margin-top:8px;background:linear-gradient(90deg,var(--accent),#ff8d2b);color:#fff;border:none;padding:6px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+.toggle-bio:hover{opacity:0.9}
+.full-bio{display:none;margin-top:10px;background:#fff;padding:14px;border-radius:10px;border:1px solid rgba(19,52,90,0.08)}
+.full-bio.open{display:block}
