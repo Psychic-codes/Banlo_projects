@@ -64,11 +64,22 @@ body::after{
 .wrap{max-width:var(--max-w);margin:0 auto;position:relative;z-index:2}
 
 /* ---------------- HEADER ---------------- */
-header{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  background:linear-gradient(90deg,var(--navy),var(--navy-2));
-  padding:12px 18px;border-radius:14px;color:white;box-shadow:var(--shadow);
+
+
+header {
+    display: flex
+;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    background: linear-gradient(90deg, var(--navy), var(--navy-2));
+    padding: 12px 18px;
+    border-radius: 14px;
+    color: white;
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
 }
+
 .brand{display:flex;align-items:center;gap:12px}
 .logo-wrap{
   width:64px;height:64px;
@@ -238,3 +249,4 @@ footer{
 .muted{color:var(--muted)}
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.show{opacity:1;transform:none}
+
