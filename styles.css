@@ -3,8 +3,8 @@
   --navy-2: #0e2b44;
   --accent: #F7901D;
   --paper: #fcfcfc;
-  --muted: #6b7a89;
-  --text: #0b2b36;
+  --muted: #252729;
+  --text: #000000;
   --card: #ffffff;
   --radius: 12px;
   --max-w: 1200px;
@@ -13,45 +13,64 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  background: linear-gradient(180deg,#eaf6fb 0%, #f8fbfc 45%, #fffefc 100%);
-  overflow-y:auto;
-  position:relative;
-  padding:28px;
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  position: relative;
+  padding: 28px;
+
+  /* preserved soft paper gradient for page */
+  background: whitesmoke url('Circle-09-01.png') center/cover  ;
+  
+  pointer-events: none;
+  z-index: -1;
 }
-body::before, body::after{
-  content:"";
-  position:fixed;
-  left:50%;
-  top:10%;
-  transform:translateX(-50%);
-  width:1200px;
-  height:700px;
-  z-index:0;
-  pointer-events:none;
-  border-radius:40%;
-  filter:blur(60px);
-  opacity:0.38;
-}
-body::before{
-  background: radial-gradient(circle at 20% 30%, rgba(19,52,90,0.18), transparent 18%),
-              radial-gradient(circle at 80% 70%, rgba(247,144,29,0.10), transparent 20%);
+
+
+/* First animated blob */
+.blob-1 {
+  content: "";
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 700px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 40%;
+  filter: blur(6px);
+  opacity: 0.38;
+  background: radial-gradient(circle at 20% 30%, rgba(19, 52, 90, 0.18), transparent 18%),
+              radial-gradient(circle at 80% 70%, rgba(247, 144, 29, 0.10), transparent 20%);
   animation: blobMove 18s linear infinite alternate;
 }
-body::after{
-  background: linear-gradient(135deg, rgba(19,52,90,0.03) 0%, rgba(247,144,29,0.02) 50%, rgba(19,52,90,0.02) 100%);
-  width:2000px;height:500px;top:30%;opacity:0.25;filter:blur(40px);
+
+.blob-2 {
+  content: "";
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  width: 2000px;
+  height: 500px;
+  pointer-events: none;
+  filter: blur(4px);
+  opacity: 0.25;
+  background: blue;
   animation: blobMove 28s linear infinite alternate-reverse;
+  z-index: -1;
 }
+
 @keyframes blobMove{
   from{transform:translateX(-48%) translateY(0) rotate(0deg)}
   to{transform:translateX(-52%) translateY(30px) rotate(6deg)}
 }
+
 .wrap::before{
   content:"";
   position:absolute; inset:0;
@@ -64,20 +83,45 @@ body::after{
 .wrap{max-width:var(--max-w);margin:0 auto;position:relative;z-index:2}
 
 /* ---------------- HEADER ---------------- */
-
-
+/* Use the image positioned at the top, cover, no blend mode.
+   Add ::before overlay for readable text without altering hues. */
 header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    background: linear-gradient(90deg, var(--navy), var(--navy-2));
-    padding: 12px 18px;
-    border-radius: 14px;
-    color: white;
-    box-shadow: var(--shadow);
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  /* background photo on header */
+  background-image: url('pexels-apasaric-618079.jpg');
+  background-position: 50% 40%;     /* <-- show top of the image */
+  background-size: cover;              /* cover the header box */
+  background-repeat: no-repeat;
+
+  /* fallback gradient beneath image (won't tint the photo) */
+  background-color: rgba(14,43,68,0.85);
+
+  padding: 20px;
+  border-radius: 14px;
+  color: white;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+  position: relative;
+  min-height: 160px;                   /* increased height so top of image is visible */
+  overflow: hidden;
 }
+
+/* overlay to darken photo slightly for contrast without changing hue */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.36) 0%, rgba(0,0,0,0.26) 50%, rgba(0,0,0,0.20) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ensure content sits above overlay */
+header > * { position: relative; z-index: 2; }
 
 .brand{display:flex;align-items:center;gap:12px}
 .logo-wrap{
@@ -97,8 +141,8 @@ header {
   display:block;
 }
 .wordmark{font-weight:800;font-size:16px;color:var(--navy);display:none}
-.brand-text .title{font-weight:800;font-size:25px}
-.brand-text .subtitle{font-size:13px;color:rgba(255,255,255,0.9)}
+.brand-text .title{font-weight:800;font-size:25px; color: #fff}
+.brand-text .subtitle{font-size:13px;color:rgba(255,255,255,0.92)}
 
 /* NAV */
 nav{display: flex;align-items: center;flex-wrap: wrap;justify-content: space-around;}
@@ -248,7 +292,6 @@ footer{
 .muted{color:var(--muted)}
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.show{opacity:1;transform:none}
-
 
 
 
