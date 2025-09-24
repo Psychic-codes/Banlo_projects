@@ -25,6 +25,8 @@ body {
 
   /* preserved soft paper gradient for page */
   background: whitesmoke url('Circle-09-01.png') center/cover  ;
+  
+
   z-index: -1;
 }
 
@@ -290,7 +292,6 @@ footer{
 .muted{color:var(--muted)}
 .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.show{opacity:1;transform:none}
-
 
 
 
