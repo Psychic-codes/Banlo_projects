@@ -91,11 +91,15 @@ header {
   justify-content: space-between;
   gap: 18px;
 
-  /* background photo on header */
-  background-image: url('pexels-apasaric-618079.jpg');
-  background-position: 50% 40%;     /* <-- show top of the image */
-  background-size: cover;              /* cover the header box */
-  background-repeat: no-repeat;
+background: linear-gradient(90deg, #add8e6, #87cefa);
+
+
+
+
+
+
+
+
 
   /* fallback gradient beneath image (won't tint the photo) */
   background-color: rgba(14,43,68,0.85);
@@ -262,6 +266,7 @@ footer{
   align-items:center;
   gap:6px;
   justify-content:center;
+  color: #f98d11;
 }
 .footer-content a{
   color:var(--accent);
